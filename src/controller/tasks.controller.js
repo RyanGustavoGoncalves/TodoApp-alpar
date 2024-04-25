@@ -24,4 +24,10 @@ export class TasksController {
     getAllTasks(req, res) {
         return res.send(this.tasks);
     }
+
+    deleteTasks(req, res) {
+        const id = req.params.id;
+        console.log(id);
+        return res.json();
+    }
 }

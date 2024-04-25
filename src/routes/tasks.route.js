@@ -5,3 +5,4 @@ export const tasksRouter = Router();
 const tasksController = new TasksController();
 
 tasksRouter.get('/', tasksController.getAllTasks);
+tasksRouter.delete('/:id', tasksController.deleteTasks);

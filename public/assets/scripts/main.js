@@ -1,10 +1,16 @@
+import { response } from "express";
+
 const addButton = document.getElementById("addBtn");
 const taskCont = document.getElementById("task-container");
 const taskName = document.getElementById("taskName");
 
 const fetchTasks = () => {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach(task => renderTask(task));
+    fetch('http://localhost:3000/api/tasks')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            data.forEach(task => renderTask(task));
+        })
 }
 
 
@@ -46,7 +52,11 @@ addButton.addEventListener('click', () => {
 
 fetchTasks();
 
-
-function deletar(task) {
-    console.log(task);
+function deletar(id) {
+    console.log(id);
+    fetch(`http://localhost:3000/api/tasks/${id}`, {
+        method: "DELETE",
+    })
+        .then(response => response.json())
+    console.log(response);
 }

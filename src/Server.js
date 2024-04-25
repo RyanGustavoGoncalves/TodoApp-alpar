@@ -12,7 +12,7 @@ export class Server {
 
     setRoutes() {
         this.app.use(express.static('public'));
-        this.app.use('/tasks', tasksRouter);
+        this.app.use('/api/tasks', tasksRouter);
     }
 
     listen(port) {
