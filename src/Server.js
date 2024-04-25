@@ -1,13 +1,20 @@
 import express from 'express';
 import { tasksRouter } from './routes/tasks.route.js';
+import bodyParser from 'body-parser';
 
 export class Server {
     constructor(port) {
         this.app = express();
 
+        this.setMiddlewares();
+
         this.setRoutes();
 
         this.listen(port);
+    }
+
+    setMiddlewares(){
+        this.app.use(bodyParser.json())
     }
 
     setRoutes() {
