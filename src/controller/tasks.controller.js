@@ -18,11 +18,12 @@ export class TasksController {
             },
         ];
 
-        this.lastId = 2;
+        this.lastId = 3;
 
         this.getAllTasks = this.getAllTasks.bind(this);
         this.addTasks = this.addTasks.bind(this);
         this.deleteTasks = this.deleteTasks.bind(this);
+        this.updateTask = this.updateTask.bind(this);
     }
 
     getAllTasks(req, res) {
@@ -51,6 +52,7 @@ export class TasksController {
         const newTask = this.tasks.find(element => element.id === id);
         newTask.name = task.name ? task.name : newTask.name;
         newTask.checked = typeof task.checked === 'boolean' ? task.checked : newTask.checked;
+        
         return res.json(newTask);
     }
 }

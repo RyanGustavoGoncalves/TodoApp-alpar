@@ -22,7 +22,7 @@ const renderTask = (task) => {
     taskElement.classList.add("task");
     taskElement.innerHTML = `
     <div class="checkbox-wrapper-15">
-        <input class="inp-cbx" id="cbx-${task.id}" type="checkbox" style="display: none;" />
+    <input class="inp-cbx" onClick="updateTask('${task.name}', '${task.id}', this.checked)" id="cbx-${task.id}" type="checkbox" style="display: none;" />
         <label class="cbx" for="cbx-${task.id}">
             <span>
                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -37,6 +37,9 @@ const renderTask = (task) => {
         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
     </svg>`;
     taskCont.appendChild(taskElement);
+
+    const checkbox = document.getElementById(`cbx-${task.id}`);
+    checkbox.checked = task.checked;
 
     const deleteIcon = taskElement.querySelector(".bi-trash");
     deleteIcon.addEventListener("click", () => {
@@ -57,11 +60,22 @@ addButton.addEventListener('click', () => {
             'Content-Type': 'application/json',
         }
     })
-        .then(() => {
-            renderTask(task);
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Erro ao adicionar a tarefa');
+            }
+        })
+        .then((data) => {            
+            renderTask(data);
             taskName.value = "";
         })
+        .catch((error) => {
+            console.error('Erro:', error);
+        });
 });
+
 
 fetchTasks();
 
@@ -78,5 +92,22 @@ function deletar(id, taskElement) {
         .catch(error => console.error('Erro ao deletar tarefa:', error))
         .finally(() => {
             fetchTasks();
+        });
+}
+
+function updateTask(name, id, checked) {
+    fetch(`${url}/${id}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, checked: checked }),
+    })
+        .then(response => response.json())
+        .then(updatedTask => {
+            fetchTasks();
+        })
+        .catch(error => {
+            console.error('Error updating task:', error);
         });
 }
