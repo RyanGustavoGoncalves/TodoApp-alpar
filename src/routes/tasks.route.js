@@ -6,4 +6,5 @@ const tasksController = new TasksController();
 
 tasksRouter.get('/', tasksController.getAllTasks);
 tasksRouter.post('/', tasksController.addTasks);
+tasksRouter.patch('/:id', tasksController.updateTask);
 tasksRouter.delete('/:id', tasksController.deleteTasks);

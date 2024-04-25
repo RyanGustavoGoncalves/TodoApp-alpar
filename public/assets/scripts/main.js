@@ -1,5 +1,3 @@
-import { response } from "express";
-
 const addButton = document.getElementById("addBtn");
 const taskCont = document.getElementById("task-container");
 const taskName = document.getElementById("taskName");
@@ -55,15 +53,14 @@ addButton.addEventListener('click', () => {
     fetch(url, {
         method: "POST",
         body: JSON.stringify(task),
-        headers:{
+        headers: {
             'Content-Type': 'application/json',
         }
     })
-        .then(response => response.json())
-        .then(console.log)
-
-    renderTask(task);
-    taskName.value = "";
+        .then(() => {
+            renderTask(task);
+            taskName.value = "";
+        })
 });
 
 fetchTasks();
