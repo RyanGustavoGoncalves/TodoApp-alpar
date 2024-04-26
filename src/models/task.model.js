@@ -1,10 +1,10 @@
-class TaskModel {
+export class TaskModel {
     _id;
     _checked;
     _name;
     static lastId;
 
-    constructor(name, checked, id) {
+    constructor({ name, checked, id }) {
         this.name = name;
         this.checked = checked;
         if (id) {
@@ -13,7 +13,7 @@ class TaskModel {
             }
             this.id = id;
         } else {
-            if(!TaskModel.lastId){
+            if (!TaskModel.lastId) {
                 TaskModel.lastId = 0;
             }
             TaskModel.lastId++;
