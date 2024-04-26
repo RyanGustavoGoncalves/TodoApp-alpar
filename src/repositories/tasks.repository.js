@@ -7,13 +7,14 @@ export class TasksRepository {
 
     async createTask({ name, checked }) {
         const task = await this.prisma.task.create({
-            data:
+            data: {
                 name,
                 checked,
-        })
-        this.tasks.push(task);
+            }
+        });
         return task;
     }
+    
 
     async getTasks() {
         const tasks = await this.prisma.task.findMany();
@@ -37,7 +38,7 @@ export class TasksRepository {
     async deleteTask(id) {
         await this.prisma.task.delete({
             where: {
-                id
+                id,
             }
         })
     }
