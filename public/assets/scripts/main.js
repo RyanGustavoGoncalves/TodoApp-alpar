@@ -62,12 +62,13 @@ addButton.addEventListener('click', () => {
     })
         .then((response) => {
             if (response.ok) {
+                fetchTasks();
                 return response.json();
             } else {
                 throw new Error('Erro ao adicionar a tarefa');
             }
         })
-        .then((data) => {            
+        .then((data) => {
             renderTask(data);
             taskName.value = "";
         })
