@@ -6,7 +6,8 @@ export class TasksController {
     }
 
     getAllTasks = (req, res) => {
-        return res.send(this.tasks);
+        const allTasks = this.repository.getTasks();
+        return res.json(allTasks);
     }
 
     addTasks = (req, res) => {
