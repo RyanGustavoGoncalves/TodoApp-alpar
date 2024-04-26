@@ -1,7 +1,7 @@
 export class TaskModel {
-    _id;
-    _checked;
-    _name;
+    id;
+    checked;
+    name;
     static lastId;
 
     constructor({ name, checked, id }) {
@@ -19,24 +19,5 @@ export class TaskModel {
             TaskModel.lastId++;
             this.id = TaskModel.lastId;
         }
-    }
-
-    get id() {
-        return this._id;
-    }
-    set id(value) {
-        this._id = value;
-    }
-    get checked() {
-        return this._checked;
-    }
-    set checked(value) {
-        this._checked = value;
-    }
-    get name() {
-        return this._name;
-    }
-    set name(value) {
-        this._name = value;
     }
 }
