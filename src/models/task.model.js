@@ -5,11 +5,11 @@ export class TaskModel {
     static lastId;
 
     constructor({ name, checked, id }) {
-        this.name = name;
-        this.checked = checked;
+        this.setName(name);
+        this.setChecked(checked);
         if (id) {
             if (id > TaskModel.lastId) {
-                TaskModel.lastId = id
+                TaskModel.lastId = id;
             }
             this.id = id;
         } else {
@@ -17,26 +17,26 @@ export class TaskModel {
                 TaskModel.lastId = 0;
             }
             TaskModel.lastId++;
-            this.id = TaskModel.lastId;
+            this.setId(TaskModel.lastId);
         }
     }
 
     getId() {
         return this.id;
     }
-    setId(value) {
-        this.id = value;
+    setId(id) {
+        this.id = id;
     }
     getChecked() {
         return this.checked;
     }
-    setChecked(value) {
-        this.checked = value;
+    setChecked(checked) {
+        this.checked = checked;
     }
     getName() {
         return this.name;
     }
-    setName(value) {
+    setName(name) {
         this.name = value;
     }
 }
