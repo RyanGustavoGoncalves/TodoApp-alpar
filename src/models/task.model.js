@@ -20,4 +20,23 @@ export class TaskModel {
             this.id = TaskModel.lastId;
         }
     }
+
+    getId() {
+        return this.id;
+    }
+    setId(value) {
+        this.id = value;
+    }
+    getChecked() {
+        return this.checked;
+    }
+    setChecked(value) {
+        this.checked = value;
+    }
+    getName() {
+        return this.name;
+    }
+    setName(value) {
+        this.name = value;
+    }
 }
