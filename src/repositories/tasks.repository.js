@@ -3,16 +3,17 @@ import { TaskModel } from "../models/task.model.js";
 export class TasksRepository {
     tasks = [];
 
-    createTask({ name, checked }) {
+    async createTask({ name, checked }) {
         const task = new TaskModel({ name, checked });
         this.tasks.push(task);
         return task;
     }
 
-    getTasks() {
+    async getTasks() {
         return this.tasks;
     }
-    updateTask({ id, name, checked }) {
+
+    async updateTask({ id, name, checked }) {
         const task = this.tasks.find(task => task.id === id);
         if (!task) {
             return null;
@@ -23,7 +24,7 @@ export class TasksRepository {
 
         return;
     }
-    deleteTask(id) {
+    async deleteTask(id) {
         this.tasks = this.tasks.filter(task => task.id !== id);
     }
 }
