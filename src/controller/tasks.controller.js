@@ -12,11 +12,9 @@ export class TasksController {
 
     addTasks = (req, res) => {
         const task = req.body;
-        this.lastId++;
-        task.id = this.lastId;
-        this.tasks.push(task);
+        const newTask = this.repository.createTask(task)
 
-        return res.json(task);
+        return res.json(newTask);
     }
 
     deleteTasks = (req, res) => {
