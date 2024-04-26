@@ -1,30 +1,44 @@
-import { TaskModel } from "../models/task.model.js";
+import { PrismaClient } from "@prisma/client";
 
 export class TasksRepository {
-    tasks = [];
+    constructor() {
+        this.prisma = new PrismaClient();
+    }
 
     async createTask({ name, checked }) {
-        const task = new TaskModel({ name, checked });
+        const task = await this.prisma.task.create({
+            data:
+                name,
+                checked,
+        })
         this.tasks.push(task);
         return task;
     }
 
     async getTasks() {
-        return this.tasks;
+        const tasks = await this.prisma.task.findMany();
+        return tasks;
     }
 
     async updateTask({ id, name, checked }) {
-        const task = this.tasks.find(task => task.getId() === id);
-        if (!task) {
-            return null;
-        }
+        const task = await this.prisma.task.update({
+            where: {
+                id: id,
+            },
+            data: {
+                name,
+                checked,
+            }
+        });
 
-        task.setName(name ? name : task.getName());
-        task.setChecked(checked === undefined ? task.getChecked() : checked);
-
-        return;
+        return task;
     }
+
     async deleteTask(id) {
-        this.tasks = this.tasks.filter(task => task.getId() !== id);
+        await this.prisma.task.delete({
+            where: {
+                id
+            }
+        })
     }
 }
