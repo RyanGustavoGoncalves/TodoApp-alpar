@@ -14,17 +14,17 @@ export class TasksRepository {
     }
 
     async updateTask({ id, name, checked }) {
-        const task = this.tasks.find(task => task.id === id);
+        const task = this.tasks.find(task => task.getId() === id);
         if (!task) {
             return null;
         }
 
-        task.name = name ? name : task.name;
-        task.checked = checked === undefined ? task.checked : checked;
+        task.setName(name ? name : task.getName());
+        task.setChecked(checked === undefined ? task.getChecked() : checked);
 
         return;
     }
     async deleteTask(id) {
-        this.tasks = this.tasks.filter(task => task.id !== id);
+        this.tasks = this.tasks.filter(task => task.getId() !== id);
     }
 }

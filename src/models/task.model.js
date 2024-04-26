@@ -37,6 +37,6 @@ export class TaskModel {
         return this.name;
     }
     setName(name) {
-        this.name = value;
+        this.name = name;
     }
 }
