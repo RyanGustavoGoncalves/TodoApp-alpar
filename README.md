@@ -13,7 +13,7 @@ Este é o repositório do TodoApp, uma aplicação simples para gerenciar listas
 
 1. Clone o repositório para o seu computador local:
    ```
-   git clone https://github.com/RyanGustavoGoncalves/TodoApp.git
+   https://github.com/RyanGustavoGoncalves/TodoApp-alpar.git
    ```
 2. Instale as dependências do projeto usando npm ou yarn:
    ```
