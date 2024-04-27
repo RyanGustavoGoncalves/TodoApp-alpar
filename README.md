@@ -36,8 +36,7 @@ Este é o repositório do TodoApp, uma aplicação simples para gerenciar listas
 
 ## Professor e Empresa 👨‍🏫🏢
 
-Este projeto foi desenvolvido com o apoio e orientação do professor <a href="https://github.com/felipe-ds-lima">**Felipe Lima**<a>, como parte do treinamento oferecido pela empresa <a href="https://alpar.com.br">**Alpar**<a>. A Alpar oferece oportunidades de treinamento e desenvolvimento para novos talentos em diversas áreas de tecnologia.
-
+Este projeto foi desenvolvido com o apoio e orientação do professor <a href="https://github.com/felipe-ds-lima">**Felipe Lima**<a>, como parte do treinamento oferecido pela empresa <a href="https://alpar.com.br">**Alpar**<a>.
 ## Contribuindo
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request com sugestões de melhorias ou correções.
