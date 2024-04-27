@@ -1,6 +1,6 @@
 # TodoApp 📝✅
 
-Este é o repositório do TodoApp, uma aplicação simples para gerenciar listas de tarefas. Desenvolvido como parte do treinamento de trainees na **Alpar**, este projeto utiliza HTML, CSS, JavaScript e Prisma para integração com um banco de dados SQLite.
+Este é o repositório do TodoApp, uma aplicação simples para gerenciar listas de tarefas. Desenvolvido como parte do treinamento da **Alpar**, este projeto utiliza HTML, CSS, JavaScript e Prisma para integração com um banco de dados SQLite.
 
 ## Funcionalidades
 
